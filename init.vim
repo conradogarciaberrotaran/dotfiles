@@ -5,6 +5,7 @@
 "" - create a virtualenv called nvim
 "" - install pynvim, black and flake8
 "" - install the silver searcher (Ag)
+"" - ~/.config/flake8 should contain global flake8 configuration
 
 "" Plugin installation
 call plug#begin(expand('~/.config/nvim/plugged'))
@@ -22,6 +23,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
   Plug 'godlygeek/tabular'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-surround'
   " Python
   Plug 'davidhalter/jedi-vim'
   Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
@@ -198,8 +200,7 @@ nmap <leader>t :TestNearest<CR>
 let g:deoplete#enable_at_startup = 1
 
 " Isort
-let g:vim_isort_config_overrides = {
-  \ 'profile': 'black'}
+let g:vim_isort_config_overrides = {'profile': 'black'}
 
 autocmd BufWritePost *.py silent! execute ':Isort'
 
@@ -211,11 +212,13 @@ let g:ale_linters = {}
 :call extend(g:ale_linters, {
     \'python': ['flake8'], })
 
+:call ale#Set('python_flake8_options', '--config=$HOME/.config/flake8')
+
 " black
 nnoremap <F9> :Black<CR>
 let g:black#settings = {
     \ 'fast': 1,
-    \ 'line_length': 88
+    \ 'line_length': 100
 \}
 
 " autocomplete
