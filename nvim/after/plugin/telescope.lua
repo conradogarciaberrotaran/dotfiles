@@ -1,14 +1,9 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
-
-telescope.load_extension("ag")
-telescope.load_extension("zoxide")
+require('telescope').load_extension('ag')
+require('telescope').load_extension('zoxide')
 
 local actions = require("telescope.actions")
 
-telescope.setup({
+require("telescope").setup({
 	file_ignore_patterns = { ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
 	defaults = {
 		prompt_prefix = " ",
@@ -82,7 +77,7 @@ telescope.setup({
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
 			filetypes = { "png", "webp", "jpg", "jpeg" },
-			find_cmd = "rg", -- find command (defaults to `fd`)
+			find_cmd = "ag", -- find command (defaults to `fd`)
 		},
 		-- Your extension configuration goes here:
 		-- extension_name = {

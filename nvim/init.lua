@@ -1,3 +1,2 @@
-require("general")
-require("theme")
-require("lsp")
+require("options")
+require("plugins")
