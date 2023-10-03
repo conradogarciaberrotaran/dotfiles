@@ -1,7 +1,7 @@
 local servers = {
 	"lua_ls",
-    "pylsp"
-
+	"pylsp",
+    "tsserver",
 }
 
 local settings = {

@@ -1,5 +1,6 @@
 local opts = { noremap = true, silent = true }
 
+
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -35,13 +36,12 @@ keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
 -- Find files and live grep
 keymap(
-	"n",
-	"<C-p>",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	opts
+    "n",
+    "<C-p>",
+    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    opts
 )
-keymap("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
-
+keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -90,8 +90,13 @@ vim.cmd([[
     cnoreabbrev Qa qa
     cnoreabbrev Qall qall
 ]])
+
 -- Disable annoying command history popup
 keymap("n", "q:", "<nop>", opts)
 
 -- Add format command
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
+
+-- Open zoxide directories
+local t = require("telescope")
+vim.keymap.set("n", "<leader>cd", t.extensions.zoxide.list)
