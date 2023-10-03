@@ -1,0 +1,15 @@
+{
+    "editor.formatOnSave": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+    },
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "window.zoomLevel": 1
+}
