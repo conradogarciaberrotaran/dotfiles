@@ -1,142 +1,154 @@
 return {
 
-    -- Theme
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup({
-                integrations = {
-                    cmp = true,
-                    gitsigns = true,
-                    nvimtree = true,
-                    treesitter = true,
-                    mason = true,
-                    telescope = {
-                        enabled = true,
-                    },
-                    native_lsp = {
-                        enabled = true,
-                        virtual_text = {
-                            errors = { "italic" },
-                            hints = { "italic" },
-                            warnings = { "italic" },
-                            information = { "italic" },
-                        },
-                        underlines = {
-                            errors = { "underline" },
-                            hints = { "underline" },
-                            warnings = { "underline" },
-                            information = { "underline" },
-                        },
-                        inlay_hints = {
-                            background = true,
-                        },
-                    },
-                }
-            })
-            vim.cmd("colorscheme catppuccin-mocha")
-        end
+	-- Theme
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+					mason = true,
+					telescope = {
+						enabled = true,
+					},
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { "italic" },
+							hints = { "italic" },
+							warnings = { "italic" },
+							information = { "italic" },
+						},
+						underlines = {
+							errors = { "underline" },
+							hints = { "underline" },
+							warnings = { "underline" },
+							information = { "underline" },
+						},
+						inlay_hints = {
+							background = true,
+						},
+					},
+				},
+			})
+			vim.cmd("colorscheme catppuccin-mocha")
+		end,
+	},
 
-    },
+	-- Telescope with Silver Searcher and Zoxide
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"kelly-lin/telescope-ag",
+			"jvgrootveld/telescope-zoxide",
+		},
+	},
 
-    -- Telescope with Silver Searcher and Zoxide
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "kelly-lin/telescope-ag",
-            "jvgrootveld/telescope-zoxide",
+	-- Nvim Tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({
+				update_cwd = false,
+				filters = {
+					dotfiles = true,
+					custom = { "__pycache__" },
+				},
+			})
+		end,
+	},
 
-        }
-    },
+	-- Treesitter
+	"nvim-treesitter/nvim-treesitter",
 
-    -- Nvim Tree
-    {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        },
-        config = function()
-            require("nvim-tree").setup({
-                update_cwd = false,
-                filters = {
-                    dotfiles = true,
-                    custom = { "__pycache__" },
-                },
-            })
-        end
-    },
+	-- Git
+	"lewis6991/gitsigns.nvim",
 
-    -- Treesitter
-    "nvim-treesitter/nvim-treesitter",
+	-- Bufferline
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 
-    -- Git
-    "lewis6991/gitsigns.nvim",
+	-- Bufdelete, use :Bdelete instead of :bdelete
+	"famiu/bufdelete.nvim",
 
-    -- Bufferline
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        }
-    },
+	-- Blankline
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup()
+		end,
+	},
 
-    -- Bufdelete, use :Bdelete instead of :bdelete
-    "famiu/bufdelete.nvim",
+	-- Highlighted yank
+	{ "machakann/vim-highlightedyank" },
 
-    -- Blankline
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("ibl").setup()
-        end
-    },
+	-- Comfortable motion
+	{ "yuttie/comfortable-motion.vim" },
 
+	-- Automatic python virtualenv management
+	{ "sansyrox/vim-python-virtualenv" },
 
-    -- Highlighted yank
-    { "machakann/vim-highlightedyank" },
+	-- LSP Installer
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = true },
+			{ "williamboman/mason-lspconfig.nvim", opts = true },
+		},
+		opts = {
+			ensure_installed = {
+				"ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
+				"black", -- formatter
+				"isort", -- organize imports
+				"taplo", -- LSP for toml (for pyproject.toml files)
+			},
+		},
+	},
 
-    -- Comfortable motion
-    { "yuttie/comfortable-motion.vim" },
+	-- Enables LSP
+	"neovim/nvim-lspconfig",
 
-    -- Automatic python virtualenv management
-    { "sansyrox/vim-python-virtualenv" },
+	-- Code completion
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 
-    -- LSP Installer
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
 
-    -- Enables LSP
-    "neovim/nvim-lspconfig",
+	-- null-ls replacement (none-ls)
+	"nvimtools/none-ls.nvim",
 
-    -- Code completion
-    {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'rafamadriz/friendly-snippets',
-
-            'hrsh7th/cmp-nvim-lsp',
-
-        },
-    },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
-    },
-
-    -- Lua nvim configuration
-    { "folke/neodev.nvim", opts = {} },
+	-- Lua nvim configuration
+	{ "folke/neodev.nvim", opts = {} },
 }

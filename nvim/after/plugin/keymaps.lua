@@ -32,10 +32,10 @@ keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
 -- Find files and live grep
 keymap(
-    "n",
-    "<C-p>",
-    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-    opts
+	"n",
+	"<C-p>",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	opts
 )
 keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
 -- Resize with arrows
