@@ -1,7 +1,7 @@
-local opts = { noremap = true, silent = true }
-
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = function(mode, keys, func, desc)
+	vim.api.nvim_set_keymap(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
 
 -- Modes
 --   normal_mode = "n",
@@ -14,54 +14,52 @@ local keymap = vim.api.nvim_set_keymap
 -- Normal --
 
 -- Navigate buffers
-keymap("n", "<leader>q", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "<leader>w", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<leader>x", ":Bdelete<CR>", opts)
+keymap("n", "<leader>q", ":BufferLineCyclePrev<CR>", "Previous buffer")
+keymap("n", "<leader>w", ":BufferLineCycleNext<CR>", "Next buffer")
+keymap("n", "<leader>x", ":Bdelete<CR>", "Close buffer")
 
 -- Clear search highlight
-keymap("n", "<leader> ", ":noh<CR>", opts)
+keymap("n", "<leader> ", ":noh<CR>", "Clear highlight")
 
 -- CTRL+[hjkl] to jump to vertical/horizontal split
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h", "Left panel")
+keymap("n", "<C-j>", "<C-w>j", "Bottom panel")
+keymap("n", "<C-k>", "<C-w>k", "Top panel")
+keymap("n", "<C-l>", "<C-w>l", "Right panel")
 
 -- (temporary) CTRL+n Open Left explorer
-keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<C-n>", ":NvimTreeToggle<cr>", "Toggle file tree")
 
 -- Find files and live grep
 keymap(
 	"n",
 	"<C-p>",
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	opts
+	"Fuzzy file finder"
 )
-keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
+keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", "Live grep")
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>", "Resize up")
+keymap("n", "<C-Down>", ":resize +2<CR>", "Resize down")
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", "Resize left")
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", "Resize right")
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv", "")
+keymap("v", ">", ">gv", "")
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-j>", ":m .+1<CR>==", "Move text up")
+keymap("v", "<A-k>", ":m .-2<CR>==", "Move text down")
 
 -- Keep yanked buffer after pasting
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", '"_dP', "Keep yanked after pasting")
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
+keymap("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
 
 -- Fix common typos
 vim.cmd([[
@@ -88,7 +86,7 @@ vim.cmd([[
 ]])
 
 -- Disable annoying command history popup
-keymap("n", "q:", "<nop>", opts)
+keymap("n", "q:", "<nop>", "Disable command history")
 
 -- Add format command
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
