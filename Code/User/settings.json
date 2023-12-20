@@ -10,6 +10,12 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": true,
     },
-    "typescript.preferences.importModuleSpecifier": "relative",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "[html]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "window.zoomLevel": 1
 }

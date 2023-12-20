@@ -1,10 +1,22 @@
-require('telescope').load_extension('ag')
-require('telescope').load_extension('zoxide')
+require("telescope").load_extension("ag")
+require("telescope").load_extension("zoxide")
 
 local actions = require("telescope.actions")
 
 require("telescope").setup({
-	file_ignore_patterns = { ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+	file_ignore_patterns = {
+		".git/.*",
+		".cache",
+		"%.o",
+		"%.a",
+		"%.out",
+		"%.class",
+		"%.pdf",
+		"%.mkv",
+		"%.mp4",
+		"%.zip",
+		"*.lock",
+	},
 	defaults = {
 		prompt_prefix = " ",
 		selection_caret = " ",
@@ -62,7 +74,7 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			hidden = true,
+			hidden = false,
 		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {

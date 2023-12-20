@@ -90,19 +90,6 @@ require("mason-lspconfig").setup_handlers({
 		})
 	end,
 
-	["cucumber_language_server"] = function()
-		require("lspconfig").cucumber_language_server.setup({
-			settings = {
-				cucumber = {
-					features = { "**/*.feature" },
-					glue = { "**/steps/**/*.py" },
-				},
-			},
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-	end,
-
 	["pylsp"] = function()
 		require("lspconfig").pylsp.setup({
 			on_attach = on_attach,
