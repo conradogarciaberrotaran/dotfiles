@@ -153,4 +153,14 @@ return {
 
 	-- Lua nvim configuration
 	{ "folke/neodev.nvim", opts = {} },
+
+	-- Markdown preview
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 }

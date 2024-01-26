@@ -17,7 +17,7 @@ null_ls.setup({
 		-- formatting.black.with({ extra_args = { "--fast" } }),
 		-- formatting.isort.with({ extra_args = { "--profile black" } }),
 		formatting.ruff.with({
-			extra_args = { "--unfixable", "F401,F841" },
+			extra_args = { "--unfixable", "F401,F841", "--line-length", "100" },
 		}),
 		diagnostics.ruff,
 		-- Lua
