@@ -13,7 +13,7 @@ local on_attach = function(_, bufnr)
 	bufmap("K", vim.lsp.buf.hover, "Show information")
 
 	-- See all references
-	bufmap("gr", require("telescope.builtin").lsp_references, "See al references")
+	bufmap("gr", require("telescope.builtin").lsp_references, "See all references")
 
 	-- Rename all references
 	bufmap("<leader>r", vim.lsp.buf.rename, "Rename all references")

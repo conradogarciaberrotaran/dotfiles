@@ -102,6 +102,7 @@ return {
 
 	-- Automatic python virtualenv management
 	{ "sansyrox/vim-python-virtualenv" },
+	{ "vim-test/vim-test" },
 
 	-- LSP Installer
 	{

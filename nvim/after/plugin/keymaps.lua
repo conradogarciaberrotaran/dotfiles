@@ -61,6 +61,11 @@ keymap("v", "p", '"_dP', "Keep yanked after pasting")
 keymap("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
 keymap("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
 
+---
+keymap("n", "<leader>t", ":TestNearest<cr>", "Test Nearest")
+keymap("n", "<leader>tf", ":TestFile<cr>", "Test File")
+keymap("n", "<leader>ta", ":TestFile<cr>", "Test All")
+
 -- Fix common typos
 vim.cmd([[
     cnoreabbrev W! w!
