@@ -18,6 +18,9 @@ keymap("n", "<leader>q", ":BufferLineCyclePrev<CR>", "Previous buffer")
 keymap("n", "<leader>w", ":BufferLineCycleNext<CR>", "Next buffer")
 keymap("n", "<leader>x", ":Bdelete<CR>", "Close buffer")
 
+-- Go to definition for behave step
+keymap("n", "<leader>b", ":call behave#goto_step_definition()<CR>", "Go to step definition (cucumber)")
+
 -- Clear search highlight
 keymap("n", "<leader> ", ":noh<CR>", "Clear highlight")
 

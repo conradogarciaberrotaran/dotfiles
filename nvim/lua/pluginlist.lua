@@ -164,4 +164,7 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
+
+	-- Behave
+	{ "avanzzzi/behave.vim" },
 }
