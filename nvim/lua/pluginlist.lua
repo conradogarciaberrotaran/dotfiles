@@ -167,4 +167,12 @@ return {
 
 	-- Behave
 	{ "avanzzzi/behave.vim" },
+
+	-- Screenshot
+	{ "mistricky/codesnap.nvim", build = "make",
+        config = function (_, opts)
+			require("codesnap").setup(opts)
+        end
+
+    },
 }
