@@ -103,6 +103,19 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
+	["rust_analyzer"] = function()
+		require("lspconfig").rust_analyzer.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					checkOnSave = {
+						command = "clippy",
+					},
+				},
+			},
+		})
+	end,
 	["lua_ls"] = function()
 		require("neodev").setup()
 		require("lspconfig").lua_ls.setup({
