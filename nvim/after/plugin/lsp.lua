@@ -90,19 +90,6 @@ require("mason-lspconfig").setup_handlers({
 		})
 	end,
 
-	["pylsp"] = function()
-		require("lspconfig").pylsp.setup({
-			on_attach = on_attach,
-			settings = {
-				pylsp = {
-					plugins = {
-						pyflakes = { enabled = false },
-						pycodestyle = { enabled = false },
-					},
-				},
-			},
-		})
-	end,
 	["rust_analyzer"] = function()
 		require("lspconfig").rust_analyzer.setup({
 			on_attach = on_attach,
