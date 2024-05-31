@@ -31,7 +31,6 @@ return {
 				"cssls",
 				"lua_ls",
 				"pylsp",
-				"ruff_lsp",
 			},
 		})
 
@@ -40,7 +39,7 @@ return {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"taplo", -- LSP for toml (for pyproject.toml files)
-				"ruff",
+				"ruff_lsp",
 			},
 		})
 	end,
