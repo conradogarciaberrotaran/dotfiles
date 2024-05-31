@@ -39,6 +39,7 @@ return {
 				"ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
 				"stylua", -- lua formatter
 				"taplo", -- LSP for toml (for pyproject.toml files)
+				"ruff",
 			},
 		})
 	end,
