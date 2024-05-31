@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 100
+lint.select = [
+    "C4",  # flake8-comprehensions
+    "E",   # pycodestyle
+    "ERA", # eradicate (removes commented out code)
+    "F",   # pyflakes
+    "I",   # isort
+    "PLC", # pylint
+    "SIM", # flake8-simplify
+    "TID", # tidy-imports
+    "W",   # warnings
+]

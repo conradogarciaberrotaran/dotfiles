@@ -27,17 +27,6 @@ keymap("n", "<C-j>", "<C-w>j", "Bottom panel")
 keymap("n", "<C-k>", "<C-w>k", "Top panel")
 keymap("n", "<C-l>", "<C-w>l", "Right panel")
 
--- (temporary) CTRL+n Open Left explorer
-keymap("n", "<C-n>", ":NvimTreeToggle<cr>", "Toggle file tree")
-
--- Find files and live grep
-keymap(
-	"n",
-	"<C-p>",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	"Fuzzy file finder"
-)
-keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", "Live grep")
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", "Resize up")
 keymap("n", "<C-Down>", ":resize +2<CR>", "Resize down")
@@ -55,11 +44,6 @@ keymap("v", "<A-k>", ":m .-2<CR>==", "Move text down")
 
 -- Keep yanked buffer after pasting
 keymap("v", "p", '"_dP', "Keep yanked after pasting")
-
--- Visual Block --
--- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
-keymap("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
 
 -- Fix common typos
 vim.cmd([[
@@ -90,7 +74,3 @@ keymap("n", "q:", "<nop>", "Disable command history")
 
 -- Add format command
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
-
--- Open zoxide directories
-local t = require("telescope")
-vim.keymap.set("n", "<leader>cd", t.extensions.zoxide.list)

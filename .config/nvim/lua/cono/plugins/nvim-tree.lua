@@ -1,3 +1,7 @@
+local keymap = function(mode, keys, func, desc)
+	vim.api.nvim_set_keymap(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
+
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = "nvim-tree/nvim-web-devicons",
@@ -11,21 +15,6 @@ return {
 		nvimtree.setup({
 			view = {
 				width = 35,
-				relativenumber = true,
-			},
-			-- change folder arrow icons
-			renderer = {
-				indent_markers = {
-					enable = true,
-				},
-				icons = {
-					glyphs = {
-						folder = {
-							arrow_closed = "", -- arrow when folder is closed
-							arrow_open = "", -- arrow when folder is open
-						},
-					},
-				},
 			},
 			-- disable window_picker for
 			-- explorer to work well with
@@ -44,5 +33,8 @@ return {
 				ignore = false,
 			},
 		})
+
+		-- (temporary) CTRL+n Open Left explorer
+		keymap("n", "<C-n>", ":NvimTreeToggle<cr>", "Toggle file tree")
 	end,
 }

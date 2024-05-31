@@ -1,25 +1,20 @@
+local keymap = function(mode, keys, func, desc)
+	vim.api.nvim_set_keymap(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"kelly-lin/telescope-ag",
 		"nvim-tree/nvim-web-devicons",
-		"folke/todo-comments.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local transform_mod = require("telescope.actions.mt").transform_mod
-
-		local trouble = require("trouble")
 
 		-- or create your custom action
-		local custom_actions = transform_mod({
-			open_trouble_qflist = function(_)
-				trouble.toggle("quickfix")
-			end,
-		})
 
 		telescope.setup({
 			file_ignore_patterns = {
@@ -41,7 +36,6 @@ return {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
 						["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
 					},
 				},
 			},
@@ -72,15 +66,13 @@ return {
 			},
 		})
 
-		telescope.load_extension("fzf")
-
-		-- set keymaps
-		local keymap = vim.keymap -- for conciseness
-
-		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		-- Find files and live grep
+		keymap(
+			"n",
+			"<C-p>",
+			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+			"Fuzzy file finder"
+		)
+		keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", "Live grep")
 	end,
 }
