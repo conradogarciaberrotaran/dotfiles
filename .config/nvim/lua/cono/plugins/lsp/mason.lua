@@ -30,14 +30,12 @@ return {
 				"html",
 				"cssls",
 				"lua_ls",
-				"pyright",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier", -- prettier formatter
-				"pylint",
 				"ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
 				"stylua", -- lua formatter
 				"taplo", -- LSP for toml (for pyproject.toml files)

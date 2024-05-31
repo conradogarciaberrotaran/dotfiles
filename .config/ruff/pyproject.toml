@@ -1,6 +1,9 @@
 [tool.ruff]
 line-length = 100
-lint.select = [
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
     "C4",  # flake8-comprehensions
     "E",   # pycodestyle
     "ERA", # eradicate (removes commented out code)
@@ -11,3 +14,4 @@ lint.select = [
     "TID", # tidy-imports
     "W",   # warnings
 ]
+fixable = ["ALL"]
