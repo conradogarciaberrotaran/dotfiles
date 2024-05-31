@@ -89,6 +89,18 @@ return {
 					},
 				})
 			end,
+			["pylsp"] = function()
+				require("lspconfig").pylsp.setup({
+					settings = {
+						pylsp = {
+							plugins = {
+								pyflakes = { enabled = false },
+								pycodestyle = { enabled = false },
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }

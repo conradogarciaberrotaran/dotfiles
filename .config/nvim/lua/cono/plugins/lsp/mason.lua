@@ -31,7 +31,7 @@ return {
 				"cssls",
 				"lua_ls",
 				"pylsp",
-				"ruff-lsp",
+				"ruff_lsp",
 			},
 		})
 
