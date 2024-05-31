@@ -18,9 +18,6 @@ keymap("n", "<leader>q", ":BufferLineCyclePrev<CR>", "Previous buffer")
 keymap("n", "<leader>w", ":BufferLineCycleNext<CR>", "Next buffer")
 keymap("n", "<leader>x", ":Bdelete<CR>", "Close buffer")
 
--- Go to definition for behave step
-keymap("n", "<leader>b", ":call behave#goto_step_definition()<CR>", "Go to step definition (cucumber)")
-
 -- Clear search highlight
 keymap("n", "<leader> ", ":noh<CR>", "Clear highlight")
 
@@ -63,11 +60,6 @@ keymap("v", "p", '"_dP', "Keep yanked after pasting")
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
 keymap("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
-
----
-keymap("n", "<leader>t", ":TestNearest<cr>", "Test Nearest")
-keymap("n", "<leader>tf", ":TestFile<cr>", "Test File")
-keymap("n", "<leader>ta", ":TestFile<cr>", "Test All")
 
 -- Fix common typos
 vim.cmd([[
