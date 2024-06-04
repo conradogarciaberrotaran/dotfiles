@@ -27,7 +27,17 @@ return {
 				},
 			},
 			filters = {
-				custom = { ".DS_Store", ".git", "*.pytest_cache", "__pycache__", ".python-version", "log.txt" },
+				custom = {
+					".DS_Store",
+					".git",
+					"*.pytest_cache",
+					"__pycache__",
+					".python-version",
+					"log.txt",
+					".ruff_cache",
+					".coverage",
+					"reports",
+				},
 			},
 			git = {
 				ignore = false,
