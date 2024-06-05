@@ -1,6 +1,3 @@
-[shell]
-program = "/usr/bin/byobu"
-
 [env]
 TERM = "xterm-256color"
 
