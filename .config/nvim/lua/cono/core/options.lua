@@ -44,3 +44,6 @@ vim.cmd([[set iskeyword+=-]])
 
 -- Highlighted yank duration
 g.highlightedyank_highlight_duration = 300
+
+-- Disable python2
+g.loaded_python3_provider = 0
