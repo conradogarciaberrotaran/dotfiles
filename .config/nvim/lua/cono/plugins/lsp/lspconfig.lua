@@ -96,6 +96,9 @@ return {
 							plugins = {
 								pyflakes = { enabled = false },
 								pycodestyle = { enabled = false },
+								pylint = { enabled = false },
+								pydocstyle = { enabled = false },
+								mccabe = { enabled = false },
 							},
 						},
 					},
