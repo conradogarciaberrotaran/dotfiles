@@ -9,6 +9,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"kelly-lin/telescope-ag",
 		"nvim-tree/nvim-web-devicons",
+		"debugloop/telescope-undo.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -71,6 +72,8 @@ return {
 				-- please take a look at the readme of the extension you want to configure
 			},
 		})
+		require("telescope").load_extension("undo")
+		keymap("n", "<leader>u", "<cmd>Telescope undo<cr>")
 
 		-- Find files and live grep
 		keymap(
