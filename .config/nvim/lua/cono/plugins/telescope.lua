@@ -31,13 +31,19 @@ return {
 				"*.lock",
 			},
 			defaults = {
-				path_display = { "smart" },
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
 						["<C-j>"] = actions.move_selection_next, -- move to next result
 					},
 				},
+
+				cache_picker = { num_pickers = 10 },
+				dynamic_preview_title = true,
+				layout_strategy = "vertical",
+				layout_config = { vertical = { width = 0.9, height = 0.9, preview_height = 0.6, preview_cutoff = 0 } },
+				path_display = { "smart", shorten = { len = 3 } },
+				wrap_results = true,
 			},
 			pickers = {
 				find_files = {

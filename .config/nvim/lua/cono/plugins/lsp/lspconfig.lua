@@ -47,10 +47,6 @@ return {
 				-- Go to previous warning / error
 				bufmap("<C-k>", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', "Go to next error")
 				bufmap("<C-j>", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', "Go to previous error")
-
-				vim.api.nvim_buf_create_user_command(ev.buf, "Format", function(_)
-					vim.lsp.buf.format({ async = true })
-				end, {})
 			end,
 		})
 

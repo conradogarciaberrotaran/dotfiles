@@ -19,9 +19,17 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
+				python = { "ruff_lsp" },
+				rust = { "rustfmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
+				filter = function(client)
+					if vim.bo.ft == "python" then
+						return client.name ~= "ruff_lsp"
+					end
+					return false
+				end,
 				async = false,
 				timeout_ms = 1000,
 			},
