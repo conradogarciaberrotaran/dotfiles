@@ -71,6 +71,13 @@ return {
 				-- }
 				-- please take a look at the readme of the extension you want to configure
 			},
+			undo = {
+				mappings = {
+					i = {
+						["<C-cr>"] = require("telescope-undo.actions").restore,
+					},
+				},
+			},
 		})
 		require("telescope").load_extension("undo")
 		keymap("n", "<leader>u", "<cmd>Telescope undo<cr>")
