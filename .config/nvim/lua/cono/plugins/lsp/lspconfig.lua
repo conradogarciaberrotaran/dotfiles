@@ -105,6 +105,17 @@ return {
 					},
 				})
 			end,
+			["ruff"] = function()
+				require("lspconfig").ruff.setup({
+					init_options = {
+						settings = {
+							lint = {
+								ignore = { "E501" },
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }
