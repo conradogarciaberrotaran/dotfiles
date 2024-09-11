@@ -116,6 +116,13 @@ return {
 					},
 				})
 			end,
+			["cucumber_language_server"] = function()
+				require("lspconfig").cucumber_language_server.setup({
+					handlers = {
+						["textDocument/publishDiagnostics"] = function() end,
+					},
+				})
+			end,
 		})
 	end,
 }
