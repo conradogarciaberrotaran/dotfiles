@@ -7,8 +7,20 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
-alias vim="nvim"
-alias vi="nvim"
+function resume_nvim() {
+  # if nvim is suspended, don't open a new one.
+  local suspended_job=$(jobs | grep 'nvim' | head -n 1 | awk '{print $1}' | tr -d '[]')
+
+  if [[ -n $suspended_job ]]; then
+    fg %"$suspended_job"
+  else
+    command nvim "$@"
+  fi
+}
+
+alias nvim=resume_nvim
+alias vim=resume_nvim
+alias vi=resume_nvim
 
 alias g="git"
 alias venv='pyenv virtualenv $1 $(basename $PWD) && pyenv local $(basename $PWD)'

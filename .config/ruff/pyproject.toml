@@ -1,17 +1,18 @@
 [tool.ruff]
-line-length = 88
+line-length = 100
 indent-width = 4
 
 [tool.ruff.lint]
 select = [
-    "C4",  # flake8-comprehensions
-    "E",   # pycodestyle
-    "ERA", # eradicate (removes commented out code)
-    "F",   # pyflakes
-    "I",   # isort
-    "PLC", # pylint
-    "SIM", # flake8-simplify
-    "TID", # tidy-imports
-    "W",   # warnings
+    "C4",   # flake8-comprehensions
+    "E",    # pycodestyle
+    "ERA",  # eradicate (removes commented out code)
+    "F",    # pyflakes
+    "I",    # isort
+    "PLC",  # pylint
+    "SIM",  # flake8-simplify
+    "TID",  # tidy-imports
+    "W",    # warnings
+    "FAST", # FastAPI
 ]
 fixable = ["ALL"]
