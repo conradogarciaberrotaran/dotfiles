@@ -11,7 +11,7 @@ decorations = "Buttonless"
 normal.family = "MesloLGS Nerd Font Mono"
 
 #regular
-size = 16
+size = 18
 
 #for video
 # size = 35.0

@@ -21,6 +21,11 @@ return {
 			command = "set filetype=groovy",
 		})
 
+		vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+			pattern = "*Dockerfile*",
+			command = "set filetype=dockerfile",
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
