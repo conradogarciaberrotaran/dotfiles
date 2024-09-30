@@ -16,3 +16,6 @@ select = [
     "FAST", # FastAPI
 ]
 fixable = ["ALL"]
+
+[tool.ruff.isort]
+combine-as-imports = true
