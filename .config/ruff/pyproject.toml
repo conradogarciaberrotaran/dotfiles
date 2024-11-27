@@ -4,18 +4,25 @@ indent-width = 4
 
 [tool.ruff.lint]
 select = [
-    "C4",   # flake8-comprehensions
-    "E",    # pycodestyle
-    "ERA",  # eradicate (removes commented out code)
-    "F",    # pyflakes
-    "I",    # isort
-    "PLC",  # pylint
-    "SIM",  # flake8-simplify
-    "TID",  # tidy-imports
-    "W",    # warnings
-    "FAST", # FastAPI
+    "A",     # flake8-builtins
+    "ASYNC", # flake8-async
+    "C4",    # flake8-comprehensions
+    "C90",   # mccabe
+    "E",     # pycodestyle
+    "ERA",   # eradicate (removes commented out code)
+    "F",     # pyflakes
+    "I",     # isort
+    "PIE",   # flake8-pie
+    "PLC",   # pylint
+    "S",     # bandit
+    "SIM",   # flake8-simplify
+    "T10",   # flake8-debugger
+    "TID",   # tidy-imports
+    "UP",    # pyupgrade
+    "W",     # warnings
 ]
 fixable = ["ALL"]
 
-[tool.ruff.isort]
+
+[tool.ruff.lint.isort]
 combine-as-imports = true

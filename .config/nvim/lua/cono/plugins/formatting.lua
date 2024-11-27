@@ -8,9 +8,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = {
-					-- To fix auto-fixable lint errors.
+					"ruff_organize_imports",
 					"ruff_fix",
-					-- To run the Ruff formatter.
 					"ruff_format",
 				},
 				rust = { "rustfmt" },

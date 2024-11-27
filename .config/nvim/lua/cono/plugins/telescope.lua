@@ -4,7 +4,6 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"kelly-lin/telescope-ag",
@@ -14,8 +13,6 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-
-		-- or create your custom action
 
 		telescope.setup({
 			file_ignore_patterns = {
@@ -29,7 +26,7 @@ return {
 				"%.mkv",
 				"%.mp4",
 				"%.zip",
-				"*.lock",
+				"%.lock",
 			},
 			defaults = {
 				mappings = {
@@ -50,26 +47,12 @@ return {
 				find_files = {
 					hidden = false,
 				},
-				-- Default configuration for builtin pickers goes here:
-				-- picker_name = {
-				--   picker_config_key = value,
-				--   ...
 			},
-			-- Now the picker_config_key will be applied every time you call this
-			-- builtin picker
-			-- },
 			extensions = {
 				media_files = {
-					-- filetypes whitelist
-					-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
 					filetypes = { "png", "webp", "jpg", "jpeg" },
 					find_cmd = "ag", -- find command (defaults to `fd`)
 				},
-				-- Your extension configuration goes here:
-				-- extension_name = {
-				--   extension_config_key = value,
-				-- }
-				-- please take a look at the readme of the extension you want to configure
 			},
 			undo = {
 				mappings = {

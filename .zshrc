@@ -23,7 +23,7 @@ alias vim=resume_nvim
 alias vi=resume_nvim
 
 alias g="git"
-alias venv='pyenv virtualenv $1 $(basename $PWD) && pyenv local $(basename $PWD)'
+alias venv='pyenv virtualenv $1 $(basename $PWD) && pyenv local $(basename $PWD) && pip install ipython ipdb'
 
 eval "$(zoxide init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"

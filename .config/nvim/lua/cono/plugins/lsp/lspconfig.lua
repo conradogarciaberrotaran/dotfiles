@@ -111,15 +111,7 @@ return {
 				})
 			end,
 			["ruff"] = function()
-				require("lspconfig").ruff.setup({
-					init_options = {
-						settings = {
-							lint = {
-								ignore = { "E501" },
-							},
-						},
-					},
-				})
+				require("lspconfig").ruff.setup({})
 			end,
 			["cucumber_language_server"] = function()
 				require("lspconfig").cucumber_language_server.setup({
