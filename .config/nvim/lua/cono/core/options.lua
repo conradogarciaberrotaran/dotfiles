@@ -36,8 +36,9 @@ o.scrolloff = 8 -- screen scroll padding
 o.sidescrolloff = 8
 o.guifont = "monospace:h17" -- the font used in graphical neovim applications
 o.laststatus = 1 -- disable 'Command line' window
--- o.shortmess:append "c"
+o.jumpoptions = "stack"
 
+-- o.shortmess:append "c"
 -- Words can contain dashes
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

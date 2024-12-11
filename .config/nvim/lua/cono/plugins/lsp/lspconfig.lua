@@ -120,6 +120,16 @@ return {
 					},
 				})
 			end,
+			["basedpyright"] = function()
+				require("lspconfig").basedpyright.setup({
+					settings = {
+						basedpyright = {
+							disableOrganizeImports = true,
+							typeCheckingMode = "standard",
+						},
+					},
+				})
+			end,
 		})
 	end,
 }
